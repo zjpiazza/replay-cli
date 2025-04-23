@@ -8124,6 +8124,8 @@ __metadata:
   resolution: "create-next-app-typescript@workspace:examples/create-next-app-typescript"
   dependencies:
     "@eslint/eslintrc": "npm:^3"
+    "@playwright/test": "npm:^1.40.1"
+    "@replayio/playwright": "workspace:^"
     "@tailwindcss/postcss": "npm:^4"
     "@types/node": "npm:^20"
     "@types/react": "npm:^19"
