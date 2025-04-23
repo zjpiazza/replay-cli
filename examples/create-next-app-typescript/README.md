@@ -1,36 +1,44 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+### Replay/Playwright Example
 
-## Getting Started
+This directory contains a single example Playwright test, which can be run with `yarn run test`.
 
-First, run the development server:
+### Confirming That Your Test Was Recorded
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+Congratulations! You just recorded your first test with Replay! If you run `npx @replayio/replay ls` you should see an entry describing the details of the recording you just made. Mine looks like this:
+
+```
+[
+  {
+    "id": 1146850316,
+    "createTime": "Tue Mar 15 2022 15:27:55 GMT-0700 (Pacific Daylight Time)",
+    "runtime": "gecko",
+    "metadata": {
+      "title": "Replay of localhost:3000",
+      "uri": "http://localhost:3000/"
+    },
+    "status": "onDisk",
+    "path": "/Users/josh/.replay/recording-1146850316.dat"
+  }
+]
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Uploading Your Replay
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+You can now upload that replay by copying it's id and passing that as an argument to `npx @replayio/replay upload`, like this:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+npx @replayio/replay upload 1146850316
+```
 
-## Learn More
+\*Don't forget to set your `REPLAY_API_KEY`, which can be created from the settings panel of `app.replay.io`.
 
-To learn more about Next.js, take a look at the following resources:
+If all goes well you should see something like the following output:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+Starting upload for 1146850316...
+Created remote recording 884d0a6a-78e2-4762-bcd7-b96dd649c0d3, uploading...
+Setting recording metadata for 884d0a6a-78e2-4762-bcd7-b96dd649c0d3
+Upload finished! View your Replay at: https://app.replay.io/recording/884d0a6a-78e2-4762-bcd7-b96dd649c0d3
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+You can now review that test run in Replay!
